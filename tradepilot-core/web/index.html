@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1e40af" />
+    <meta name="description" content="知海 TradePilot — 企业出海准入、成本与合规决策工作台。" />
+    <title>知海 TradePilot · 企业出海工作台</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%231e40af'/%3E%3Cpath d='M14 39L46 17 37 48 29 35Z' fill='white'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="./assets/app.css" />
+  </head>
+  <body>
+    <script>
+      /* 移除托管方注入的顶部横幅与底部浮动标识。
+         行为等价于其自带关闭按钮：删除节点并还原 body 的 padding-top；
+         canonical / og 等功能性注入保留不动。 */
+      (function () {
+        var BAR = 48;
+        function stripBar() {
+          var b = document.getElementById('mulepage-bar');
+          if (!b) return false;
+          b.remove();
+          var pt = parseFloat(getComputedStyle(document.body).paddingTop) || 0;
+          document.body.style.paddingTop = Math.max(0, pt - BAR) + 'px';
+          return true;
+        }
+        function stripFooter() {
+          var f = document.getElementById('mulepage-footer');
+          if (!f) return false;
+          f.remove();
+          return true;
+        }
+        var tries = 0;
+        var t = setInterval(function () {
+          tries += 1;
+          var a = stripBar(); var b = stripFooter();
+          if ((a && b) || tries > 80) clearInterval(t);
+        }, 50);
+        window.addEventListener('load', function () { setTimeout(function () { stripBar(); stripFooter(); }, 0); });
+      })();
+    </script>
+    <div id="root"></div>
+    <script src="./assets/app.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "tradepilot-core",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "企业出海 AI 智能体核心引擎：准入判断 / 综合税负测算 / SSG 预警 / 标签合规 / 法规变更监测",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test tests/engine.test.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
